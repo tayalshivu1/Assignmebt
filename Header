@@ -1,0 +1,77 @@
+<nav class="darkTheme">
+  <div class="logo">
+    <a>Shopkart</a>
+  </div>
+  <div>
+    <ul class="left-links">
+      <li>
+        <a>Products</a>
+      </li>
+      <li>
+        <a>About Us</a>
+      </li>
+      <li>
+        <a>Contact Us</a>
+      </li>
+    </ul>
+    <ul style="float: right; margin-right: 20px" class="right-links">
+      <li>
+        <a>Cart</a>
+      </li>
+      <li>
+        <a>Authentiate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+ nav
+{
+  font-family: serif;
+}
+
+.darkTheme{
+  background-color: #333;
+  text-decoration: aliceblue;
+}
+
+.logo a{
+  color: aliceblue;
+  font-size: 22px;
+  padding: 8px;
+  font-weight: bold;
+  float: left;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+ul{
+  display: inline-block;
+  color: aliceblue;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.left-links li{
+  float: left;
+}
+
+.right-links li{
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 13px;
+  text-decoration: none;
+}
+
+li a:hover{
+  color: #F77474;
+  cursor: pointer;
+}
