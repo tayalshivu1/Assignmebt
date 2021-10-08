@@ -1,0 +1,110 @@
+.contain{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-family: serif;
+  background-image: url('https://cdn.wallpapersafari.com/34/78/JiGB7d.jpg');
+  padding: 20px;
+  height: 520px
+}
+.ProductImage{
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.ProductDetail{
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-height: 400px;
+  justify-content: space-between;
+}
+button{
+  background-color: #000;
+  color: aliceblue;
+  width: 60%;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+button:hover{
+  color: #F77474;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+<div>
+  <div class="contain">
+    <div class="ProductImage">
+      <div >
+        <img
+          src="{{ product.image }}"
+          alt=""
+          style="max-height: 400px; max-width: 400px"
+        />
+      </div>
+      <div>
+        <button>Add To Cart</button>
+      </div>
+    </div>
+    <div class="ProductDetail">
+      <div >
+        <h2>{{ product.title }}</h2>
+      </div>
+      <div >
+        <p>{{ product.description }}</p>
+      </div>
+      <div >
+        <p style="font-size: 30px">
+          <strong>Price: </strong>${{ product.price }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ProductService } from '../product.service';
+import { Product } from '../product.model';
+
+@Component({
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css']
+})
+export class ProductDetailsComponent implements OnInit {
+
+  product: Product = {
+    id: 1,
+    title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+    price: 109.95,
+    description:
+      'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+    category: "men's clothing",
+    image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+    rating: { rate: 3.9, count: 120 },
+  };
+  id: number = 1;
+
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id']
+        this.product = this.productService.getProduct(this.id)
+      }
+    )
+  }
+
+}
